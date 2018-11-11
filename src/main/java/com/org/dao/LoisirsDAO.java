@@ -5,16 +5,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.org.entities.Langues;
+
 import com.org.entities.Loisirs;
-import com.org.repositories.LanguesRepository;
+
 import com.org.repositories.LoisirsRepository;
 @Service
 public class LoisirsDAO {
 	@Autowired
 	private LoisirsRepository loisirsRepository;
 
-	public List<Loisirs> getAllFormations(){
+	public List<Loisirs> getAllLoisirs(){
 		return loisirsRepository.findAll();
 	}
 	public Loisirs save(Loisirs l) {

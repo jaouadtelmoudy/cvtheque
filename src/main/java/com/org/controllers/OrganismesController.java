@@ -12,40 +12,41 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.org.dao.FormationsDAO;
-
-import com.org.entities.Formations;
-
+import com.org.dao.OrganismesDAO;
+import com.org.dao.PaysDAO;
+import com.org.entities.Organisme;
+import com.org.entities.Pays;
 
 @RestController
-@RequestMapping("/formations")
-public class FormationsController {
+@RequestMapping("/organismes")
+public class OrganismesController {
 	
 	@Autowired
-	private FormationsDAO formationsDAO;
+	private OrganismesDAO organismesDAO;
 	
 	@GetMapping
-	public List<Formations> getAllFormations(){
-		return formationsDAO.getAllFormations();
+	public List<Organisme> getAllOrganismes(){
+		return organismesDAO.getAllOrganismes();
 	}
 	@PostMapping
-	public Formations save(@RequestBody Formations f){
-		return formationsDAO.save(f);
+	public Organisme save(@RequestBody Organisme o){
+		return organismesDAO.save(o);
 	}
 	
 	@PutMapping
 	@RequestMapping("/{id}")
-	public Formations update(@RequestBody Formations f, @PathVariable Long id){
-		f.setId(id);
-		return formationsDAO.update(f);
+	public Organisme update(@RequestBody Organisme o, @PathVariable Long id){
+		o.setId(id);
+		return organismesDAO.update(o);
 	}
 	
 	@DeleteMapping
 	@RequestMapping("/delete/{id}")
 	public void delete(@PathVariable Long id) {
-		Formations f =new Formations();
-		f.setId(id);
-		formationsDAO.delete(f);
+		Organisme o =new Organisme();
+		o.setId(id);
+		organismesDAO.delete(o);
 	}
+
 
 }

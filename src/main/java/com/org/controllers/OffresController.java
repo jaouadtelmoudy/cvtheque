@@ -12,40 +12,41 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.org.dao.FormationsDAO;
-
-import com.org.entities.Formations;
-
+import com.org.dao.OffresDAO;
+import com.org.dao.OrganismesDAO;
+import com.org.entities.Offres;
+import com.org.entities.Organisme;
 
 @RestController
-@RequestMapping("/formations")
-public class FormationsController {
+@RequestMapping("/offres")
+public class OffresController {
 	
 	@Autowired
-	private FormationsDAO formationsDAO;
+	private OffresDAO offresDAO;
 	
 	@GetMapping
-	public List<Formations> getAllFormations(){
-		return formationsDAO.getAllFormations();
+	public List<Offres> getAllOffres(){
+		return offresDAO.getAllOffres();
 	}
 	@PostMapping
-	public Formations save(@RequestBody Formations f){
-		return formationsDAO.save(f);
+	public Offres save(@RequestBody Offres o){
+		return offresDAO.save(o);
 	}
 	
 	@PutMapping
 	@RequestMapping("/{id}")
-	public Formations update(@RequestBody Formations f, @PathVariable Long id){
-		f.setId(id);
-		return formationsDAO.update(f);
+	public Offres update(@RequestBody Offres o, @PathVariable Long id){
+		o.setId(id);
+		return offresDAO.update(o);
 	}
 	
 	@DeleteMapping
 	@RequestMapping("/delete/{id}")
 	public void delete(@PathVariable Long id) {
-		Formations f =new Formations();
-		f.setId(id);
-		formationsDAO.delete(f);
+		Offres o =new Offres();
+		o.setId(id);
+		offresDAO.delete(o);
 	}
+
 
 }

@@ -1,19 +1,19 @@
 package com.org.entities;
 
 import java.util.Date;
-import java.util.HashSet;
+
 import java.util.List;
-import java.util.Set;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+
 import javax.persistence.Table;
 
 @Entity
@@ -42,6 +42,9 @@ public class Candidats {
 	private List<Loisirs> loisirs;
 	@OneToMany
 	private List<Experiences> experiences;
+	
+	@OneToMany
+	private List<Offres> offres;
 	
 
 	public Candidats() {
@@ -101,19 +104,7 @@ public class Candidats {
 	public void setFormations(List<Formations> formations) {
 		this.formations = formations;
 	}
-	public Candidats(String nom, String prenom, Date dateNaissance, String adresse, String email, Pays pays,
-			List<Langues> langues, List<Formations> formations, List<Loisirs> loisirs) {
-		super();
-		this.nom = nom;
-		this.prenom = prenom;
-		this.dateNaissance = dateNaissance;
-		this.adresse = adresse;
-		this.email = email;
-		this.pays = pays;
-		this.langues = langues;
-		this.formations = formations;
-		this.loisirs = loisirs;
-	}
+
 	public List<Loisirs> getLoisirs() {
 		return loisirs;
 	}
@@ -126,8 +117,28 @@ public class Candidats {
 	public void setExperiences(List<Experiences> experiences) {
 		this.experiences = experiences;
 	}
-	
-    
+	public Candidats(String nom, String prenom, Date dateNaissance, String adresse, String email, Pays pays,
+			List<Langues> langues, List<Formations> formations, List<Loisirs> loisirs, List<Experiences> experiences,
+			List<Offres> offres) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.dateNaissance = dateNaissance;
+		this.adresse = adresse;
+		this.email = email;
+		this.pays = pays;
+		this.langues = langues;
+		this.formations = formations;
+		this.loisirs = loisirs;
+		this.experiences = experiences;
+		this.offres = offres;
+	}
+	public List<Offres> getOffres() {
+		return offres;
+	}
+	public void setOffres(List<Offres> offres) {
+		this.offres = offres;
+	}  
 
 	
 
