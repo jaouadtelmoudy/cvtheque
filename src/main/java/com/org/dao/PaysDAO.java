@@ -1,8 +1,10 @@
 package com.org.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 
@@ -10,7 +12,7 @@ import com.org.entities.Pays;
 
 import com.org.repositories.PaysRepository;
 
-@Service
+@Component
 public class PaysDAO {
 	
 	@Autowired
@@ -27,6 +29,9 @@ public class PaysDAO {
 	}
 	public void delete(Pays p) {
 		paysRepository.delete(p);
+	}
+	public Optional<Pays> getPaysParId(Long id) {
+		return paysRepository.findById(id);
 	}
 
 }

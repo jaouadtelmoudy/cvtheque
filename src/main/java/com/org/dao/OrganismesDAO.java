@@ -3,13 +3,14 @@ package com.org.dao;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.org.entities.Organisme;
 
 import com.org.repositories.OrganismesRepository;
 
-@Service
+@Component
 public class OrganismesDAO {
 	@Autowired
 	private OrganismesRepository organismesRepository;

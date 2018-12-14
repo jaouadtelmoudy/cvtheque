@@ -7,8 +7,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Entity
 @Table(name="langues")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Langues {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,32 +26,4 @@ public class Langues {
 	private String libelle;
 	@Column(name="niveau")
 	private String niveau;
-	public Langues(String libelle) {
-		super();
-		this.libelle = libelle;
-	}
-	public Langues() {
-		super();
-	}
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public String getLibelle() {
-		return libelle;
-	}
-	public void setLibelle(String libelle) {
-		this.libelle = libelle;
-	}
-	public String getNiveau() {
-		return niveau;
-	}
-	public void setNiveau(String niveau) {
-		this.niveau = niveau;
-	}
-	
-	
-
 }

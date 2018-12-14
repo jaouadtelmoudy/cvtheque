@@ -10,8 +10,17 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Entity
 @Table(name="offres")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Offres {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -26,80 +35,7 @@ public class Offres {
 	private Date dateFin;	
 	private String status;
 	@ManyToOne
-	private Organisme organisme;
-    
+	private Organisme organisme;    
 	@ManyToOne
 	private Candidats candidats;
-	
-	
-	
-	
-	public Offres(String intitulite, String description, Date dateCreation, Date dateFin, String status,
-			Organisme organisme, Candidats candidats) {
-		super();
-		this.intitulite = intitulite;
-		this.description = description;
-		this.dateCreation = dateCreation;
-		this.dateFin = dateFin;
-		this.status = status;
-		this.organisme = organisme;
-		this.candidats = candidats;
-	}
-	public Offres() {
-		super();
-	}
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public String getIntitulite() {
-		return intitulite;
-	}
-	public void setIntitulite(String intitulite) {
-		this.intitulite = intitulite;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	public Date getDateCreation() {
-		return dateCreation;
-	}
-	public void setDateCreation(Date dateCreation) {
-		this.dateCreation = dateCreation;
-	}
-	public Date getDateFin() {
-		return dateFin;
-	}
-	public void setDateFin(Date dateFin) {
-		this.dateFin = dateFin;
-	}
-	public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
-	}
-	public Organisme getOrganisme() {
-		return organisme;
-	}
-	public void setOrganisme(Organisme organisme) {
-		this.organisme = organisme;
-	}
-	public Candidats getCandidats() {
-		return candidats;
-	}
-	public void setCandidats(Candidats candidats) {
-		this.candidats = candidats;
-	}
-	
-	
-	
-	
-	
-
 }

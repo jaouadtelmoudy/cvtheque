@@ -13,9 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.org.dao.OffresDAO;
-import com.org.dao.OrganismesDAO;
 import com.org.entities.Offres;
-import com.org.entities.Organisme;
 
 @RestController
 @RequestMapping("/offres")

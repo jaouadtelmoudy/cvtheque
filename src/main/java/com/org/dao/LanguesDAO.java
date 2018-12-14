@@ -3,12 +3,13 @@ package com.org.dao;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 
 import com.org.entities.Langues;
 import com.org.repositories.LanguesRepository;
-@Service
+@Component
 public class LanguesDAO {
 	
 	@Autowired

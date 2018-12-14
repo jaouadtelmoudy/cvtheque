@@ -13,9 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.org.dao.OrganismesDAO;
-import com.org.dao.PaysDAO;
 import com.org.entities.Organisme;
-import com.org.entities.Pays;
 
 @RestController
 @RequestMapping("/organismes")

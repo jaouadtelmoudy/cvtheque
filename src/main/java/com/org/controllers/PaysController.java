@@ -1,6 +1,7 @@
 package com.org.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,6 +28,10 @@ public class PaysController {
 	@GetMapping
 	public List<Pays> getAllPays(){
 		return paysDAO.getAllPays();
+	}
+	@GetMapping("/{id}")
+	public Optional<Pays> getPaysById(@PathVariable Long id){
+		return paysDAO.getPaysParId(id);
 	}
 	@PostMapping
 	public Pays save(@RequestBody Pays p){

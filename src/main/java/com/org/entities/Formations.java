@@ -7,8 +7,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Entity
 @Table(name="formations")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Formations {
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
@@ -21,48 +30,4 @@ public class Formations {
 	private int anneeScolaire;
 	@Column(name="mention")
 	private String mention;
-	public Formations(String diplome, String etablissement, int anneeScolaire, String mention) {
-		super();
-		this.diplome = diplome;
-		this.etablissement = etablissement;
-		this.anneeScolaire = anneeScolaire;
-		this.mention = mention;
-	}
-	public Formations() {
-		super();
-	}
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public String getDiplome() {
-		return diplome;
-	}
-	public void setDiplome(String diplome) {
-		this.diplome = diplome;
-	}
-	public String getEtablissement() {
-		return etablissement;
-	}
-	public void setEtablissement(String etablissement) {
-		this.etablissement = etablissement;
-	}
-	public int getAnneeScolaire() {
-		return anneeScolaire;
-	}
-	public void setAnneeScolaire(int anneeScolaire) {
-		this.anneeScolaire = anneeScolaire;
-	}
-	public String getMention() {
-		return mention;
-	}
-	public void setMention(String mention) {
-		this.mention = mention;
-	}
-	
-	
-	
-
 }

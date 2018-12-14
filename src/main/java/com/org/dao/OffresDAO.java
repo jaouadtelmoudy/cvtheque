@@ -3,12 +3,13 @@ package com.org.dao;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.org.entities.Offres;
 import com.org.repositories.OffresRepository;
 
-@Service
+@Component
 public class OffresDAO {
 	@Autowired
 	private OffresRepository offresRepository;

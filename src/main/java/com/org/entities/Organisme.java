@@ -11,8 +11,17 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Entity
 @Table(name="organisme")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Organisme {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -27,56 +36,4 @@ public class Organisme {
 	@OneToMany
 	private List<Offres> offres;
 	
-
-	
-	public Organisme(String raisonSociale, String secteur, Date dateCreation, List<Offres> offres) {
-		super();
-		this.raisonSociale = raisonSociale;
-		this.secteur = secteur;
-		this.dateCreation = dateCreation;
-		this.offres = offres;
-	}
-
-	public Organisme() {
-		super();
-	}
-
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public String getRaisonSociale() {
-		return raisonSociale;
-	}
-	public void setRaisonSociale(String raisonSociale) {
-		this.raisonSociale = raisonSociale;
-	}
-	public String getSecteur() {
-		return secteur;
-	}
-	public void setSecteur(String secteur) {
-		this.secteur = secteur;
-	}
-	public Date getDateCreation() {
-		return dateCreation;
-	}
-	public void setDateCreation(Date dateCreation) {
-		this.dateCreation = dateCreation;
-	}
-
-	public List<Offres> getOffres() {
-		return offres;
-	}
-
-	public void setOffres(List<Offres> offres) {
-		this.offres = offres;
-	}
-	
-	
-	
-	
-	
-
 }
