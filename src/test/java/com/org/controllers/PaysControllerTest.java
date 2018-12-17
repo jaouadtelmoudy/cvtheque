@@ -4,9 +4,11 @@ import static org.hamcrest.CoreMatchers.anything;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.content;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -25,6 +27,7 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Matchers;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -35,6 +38,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultMatcher;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -82,7 +86,7 @@ public class PaysControllerTest {
 		p.setLibelle("Maroc");
 		p.setId(new Long(1));
 		 
-		when(this.paysDAOMock.getPaysParId(new Long(1))).thenReturn(null);
+		when(this.paysDAOMock.getPaysParId(new Long(1))).thenReturn(Optional.of(p));
 		mockMvc.perform(get("/pays/{id}", p.getId()).accept(MediaType.APPLICATION_JSON))		
 		        .andExpect(status().isOk());       
 		 verify(this.paysDAOMock).getPaysParId(p.getId()); 
@@ -94,13 +98,26 @@ public class PaysControllerTest {
 		p.setLibelle("Maroc");
 		p.setId(null);	
 		String json = "{\"libelle\":\"Maroc\"}";
-		when(this.paysDAOMock.save(null)).thenReturn(p);
+		when(this.paysDAOMock.save(p)).thenReturn(p);
 		mockMvc.perform(post("/pays")							
 						.contentType(MediaType.APPLICATION_JSON_VALUE)
 						.content(json))				        				        
 				        .andExpect(status().isOk())				        
 				        .andReturn();
+		// verify(this.paysDAOMock).save(p);
 	}
+	
+	@Test
+	public void delete_should_be_return_200() throws Exception {
+		Pays p = new Pays();		
+		p.setLibelle("Maroc");
+		p.setId(new Long(1));		
+	    mockMvc.perform(MockMvcRequestBuilders
+	            .delete("/pays/{id}", new Long(1))
+	            .contentType(MediaType.APPLICATION_JSON))
+	            .andExpect(status().isOk());
+	}
+	
 	
 	
 	

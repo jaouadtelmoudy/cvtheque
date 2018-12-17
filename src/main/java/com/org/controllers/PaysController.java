@@ -48,7 +48,7 @@ public class PaysController {
 	@DeleteMapping
 	@RequestMapping("/delete/{id}")
 	public void delete(@PathVariable Long id) {
-		Pays c =new Pays();
+		Pays c = new Pays();
 		c.setId(id);
 		paysDAO.delete(c);
 	}
